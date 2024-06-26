@@ -12,5 +12,19 @@
 }
 
 body {
+  font-size: 62.5%;
+}
+
+body, #root {
   min-height: 100vh;
+}
+
+body, input, button, textarea {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.wrapper {
+  max-width: 768px;
+  width: 90%;
+  margin: 0 auto;
 }
