@@ -3,12 +3,12 @@ version: "3"
 services:
   app:
     image: node:20-alpine
-    container_name: clincker-web
+    container_name: signex_web
     ports:
-      - ${APP_PORT}:8080
+      - ${APP_PORT}:5173
     working_dir: /app
     volumes:
       - ./:/app
     env_file: .env
-    command: sh -c "yarn && yarn dev"
+    command: sh -c "yarn && yarn dev --host"
     tty: true
