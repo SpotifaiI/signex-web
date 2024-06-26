@@ -5,9 +5,11 @@ import '../styles/screens/Base.css';
 export function Base() {
   return (
     <div id="base-screen">
-      <header className="wrapper">
-        <span>Signex</span>
-        <span>Dia Fragma</span>
+      <header>
+        <div className="wrapper">
+          <span>Signex</span>
+          <span>Dia Fragma</span>
+        </div>
       </header>
 
       <main className="wrapper">
