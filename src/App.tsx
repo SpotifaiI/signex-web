@@ -1,5 +1,7 @@
+import { Router } from './Router.tsx';
+
 export function App() {
   return (
-    <div>Signex</div>
+    <Router/>
   )
 }
