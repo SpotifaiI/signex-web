@@ -7,7 +7,7 @@ export function Base() {
     <div id="base-screen">
       <header>
         <div className="wrapper">
-          <span>Signex</span>
+          <span><span>S</span>ignex</span>
           <span>Dia Fragma</span>
         </div>
       </header>
