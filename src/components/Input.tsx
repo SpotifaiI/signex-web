@@ -3,7 +3,7 @@ interface PropsInput {
   label: string;
 }
 
-const Footer = ({ name, label }: PropsInput) => {
+const Input = ({ name, label }: PropsInput) => {
   return (
     <div className="input-wrapper">
       <label htmlFor={name}>{label}</label>
@@ -12,4 +12,4 @@ const Footer = ({ name, label }: PropsInput) => {
   );
 };
 
-export default Footer;
+export default Input;
