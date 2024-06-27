@@ -49,6 +49,10 @@ export function Send() {
 
   function onDocInsert(event: ChangeEvent<HTMLInputElement>): void {
     try {
+      if (!event.target.files) {
+        return;
+      }
+
       const file = event.target?.files[0];
 
       if (!file) {
