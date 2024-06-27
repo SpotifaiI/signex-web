@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { FormInput } from '../components/FormInput.tsx';
 import { ActionButton } from '../components/ActionButton.tsx';
@@ -11,7 +12,19 @@ export function Register() {
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
 
-  function onRegisterHandler() {}
+  function onRegisterHandler() {
+    try {
+      if (!name || !email || !password || !confPassword) {
+        throw 'Campos obrigatórios para cadastro.';
+      }
+
+      if (password !== confPassword) {
+        throw 'As senhas inseridas não conferem.';
+      }
+    } catch (exception) {
+      toast.error(exception);
+    }
+  }
 
   return (
     <div id="register-screen" className="login-register-shared">

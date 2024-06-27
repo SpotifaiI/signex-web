@@ -6,12 +6,21 @@ import { FormInput } from '../components/FormInput.tsx';
 
 import '../styles/screens/Login.css';
 import '../styles/shared/LoginRegister.css';
+import { toast } from 'react-toastify';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function onLoginHandler() {}
+  function onLoginHandler() {
+    try {
+      if (!email || !password) {
+        throw 'Campos obrigatórios para login.';
+      }
+    } catch (exception) {
+      toast.error(exception);
+    }
+  }
 
   return (
     <div id="login-screen" className="login-register-shared">
