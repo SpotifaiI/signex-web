@@ -8,7 +8,7 @@ export function Home() {
       <header>
         <Title>Links</Title>
 
-        <ActionButton onChange={() => {}}>
+        <ActionButton onClick={() => {}}>
           Adicionar
         </ActionButton>
       </header>
