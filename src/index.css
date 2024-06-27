@@ -27,6 +27,10 @@ body, #root {
   min-height: 100vh;
 }
 
+#root {
+  height: 100%;
+}
+
 body, input, button, textarea {
   font-family: "Ubuntu", sans-serif;
 }
