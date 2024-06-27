@@ -1,10 +1,18 @@
+import { useNavigate } from 'react-router-dom';
+
 import '../styles/screens/Home.css';
 import { Title } from '../components/Title.tsx';
 import { ActionButton } from '../components/ActionButton.tsx';
 
 export function Home() {
+  const navigate = useNavigate();
+
   function onDeleteHandler() {
     confirm('Confirma a exclusão do envio selecionado?');
+  }
+
+  function onAddHandler() {
+    navigate('/send');
   }
 
   return (
@@ -12,7 +20,7 @@ export function Home() {
       <header>
         <Title>Envios</Title>
 
-        <ActionButton onClick={() => {}}>
+        <ActionButton onClick={onAddHandler}>
           Adicionar
         </ActionButton>
       </header>
