@@ -1,8 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import { NotFound } from './screens/NotFound.tsx';
 import { Base } from './screens/Base.tsx';
 import { Home } from './screens/Home.tsx';
 import { Login } from "./screens/Login.tsx";
+import { Register } from './screens/Register.tsx';
 
 const routes = createBrowserRouter([
   {
@@ -28,7 +30,7 @@ const routes = createBrowserRouter([
   {
     errorElement: <NotFound/>,
     path: 'register',
-    element: <div>Register</div>
+    element: <Register/>
   },
 ]);
 

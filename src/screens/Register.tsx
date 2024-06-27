@@ -1,21 +1,25 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import { ActionButton } from '../components/ActionButton.tsx';
-import { FormInput } from '../components/FormInput.tsx';
-
-import '../styles/screens/Login.css';
-import '../styles/shared/LoginRegister.css';
 import { toast } from 'react-toastify';
 
-export function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import { FormInput } from '../components/FormInput.tsx';
+import { ActionButton } from '../components/ActionButton.tsx';
 
-  function onLoginHandler() {
+import '../styles/shared/LoginRegister.css';
+
+export function Register() {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confPassword, setConfPassword] = useState('');
+
+  function onRegisterHandler() {
     try {
-      if (!email || !password) {
-        throw 'Campos obrigatórios para login.';
+      if (!name || !email || !password || !confPassword) {
+        throw 'Campos obrigatórios para cadastro.';
+      }
+
+      if (password !== confPassword) {
+        throw 'As senhas inseridas não conferem.';
       }
     } catch (exception) {
       toast.error(exception);
@@ -23,7 +27,7 @@ export function Login() {
   }
 
   return (
-    <div id="login-screen" className="login-register-shared">
+    <div id="register-screen" className="login-register-shared">
       <div className="login-wrapper">
         <header>
           <span><span>S</span>ignex</span>
@@ -31,6 +35,11 @@ export function Login() {
 
         <form>
           <div>
+            <FormInput
+              label="Nome Completo"
+              value={name}
+              onChange={event => setName(event.target.value)}
+              disabled={false}/>
             <FormInput
               label="E-mail"
               type="email"
@@ -44,18 +53,18 @@ export function Login() {
               value={password}
               onChange={event => setPassword(event.target.value)}
               disabled={false}/>
+            <FormInput
+              label="Confirme a Senha"
+              type="password"
+              value={confPassword}
+              onChange={event => setConfPassword(event.target.value)}
+              disabled={false}/>
           </div>
 
-          <ActionButton onClick={onLoginHandler}>
-            Entrar
+          <ActionButton onClick={onRegisterHandler}>
+            Cadastrar
           </ActionButton>
         </form>
-
-        <footer>
-          <span>
-            Ainda não possui uma conta? <Link to="/register">Crie agora</Link>.
-          </span>
-        </footer>
       </div>
     </div>
   );
