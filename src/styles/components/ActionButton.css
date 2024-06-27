@@ -1,0 +1,16 @@
+.action-button-component {
+    height: 3.2rem;
+    padding: 0 1.2rem;
+    background: var(--color-primary);
+    border-radius: .4rem;
+    border: 0;
+    font-size: 1rem;
+    color: var(--color-lighter);
+    font-weight: 700;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.action-button-component:hover {
+    opacity: .8;
+}
