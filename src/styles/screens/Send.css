@@ -1,4 +1,8 @@
-#send-screen {}
+#send-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
 
 #send-screen > header {
     display: flex;
@@ -6,27 +10,30 @@
     justify-content: space-between;
 }
 
-#send-screen form {
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
-    margin-top: 1.2rem;
+.send-email-upload:first-child {
+    height: 20rem;
 }
 
-#send-email-upload {
-    height: 10rem;
+.send-email-upload {
+    border: .1rem solid var(--color-primary);
+    border-radius: .2rem;
+}
+
+.send-email-upload object {
+    color: var(--color-primary);
     width: 100%;
-    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#send-email-upload label {
+.send-email-upload label {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    border: .1rem solid var(--color-primary);
-    border-radius: .2rem;
     cursor: pointer;
     font-size: 1rem;
     display: flex;
@@ -37,7 +44,19 @@
     transition: .3s;
 }
 
-#send-email-upload label:hover {
+#send-screen form {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+.send-email-upload {
+    height: 4rem;
+    width: 100%;
+    position: relative;
+}
+
+.send-email-upload label:hover {
     background-color: var(--color-dark);
 }
 
@@ -54,4 +73,9 @@
     align-self: end;
     gap: .4rem;
     margin-left: .8rem;
+}
+
+#send-screen > footer {
+    display: flex;
+    flex-direction: column;
 }
