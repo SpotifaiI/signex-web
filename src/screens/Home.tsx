@@ -1,7 +1,17 @@
 import '../styles/screens/Home.css';
+import { Title } from '../components/Title.tsx';
+import { ActionButton } from '../components/ActionButton.tsx';
 
 export function Home() {
   return (
-    <div>Home</div>
+    <div id="home-screen">
+      <header>
+        <Title>Links</Title>
+
+        <ActionButton onClick={() => {}}>
+          Adicionar
+        </ActionButton>
+      </header>
+    </div>
   );
 }

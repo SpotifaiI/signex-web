@@ -3,6 +3,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-primary: #aa00ff;
+  --color-lighter: #ffffff;
+  --color-darker: #000000;
+  --color-dark: #a7b2c3;
 }
 
 * {
@@ -12,5 +17,14 @@
 }
 
 body {
+  font-size: 62.5%;
+  background-color: var(--color-lighter);
+}
+
+body, #root {
   min-height: 100vh;
+}
+
+body, input, button, textarea {
+  font-family: "Ubuntu", sans-serif;
 }
