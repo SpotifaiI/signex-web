@@ -22,7 +22,7 @@ export function Register() {
         throw 'As senhas inseridas não conferem.';
       }
     } catch (exception) {
-      toast.error(exception);
+      toast.error(<>{exception}</>);
     }
   }
 

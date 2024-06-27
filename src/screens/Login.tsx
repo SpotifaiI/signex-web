@@ -18,7 +18,7 @@ export function Login() {
         throw 'Campos obrigatórios para login.';
       }
     } catch (exception) {
-      toast.error(exception);
+      toast.error(<>{exception}</>);
     }
   }
 
