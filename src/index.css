@@ -8,6 +8,8 @@
   --color-lighter: #ffffff;
   --color-darker: #000000;
   --color-dark: #a7b2c3;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
 }
 
 * {
