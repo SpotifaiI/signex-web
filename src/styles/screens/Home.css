@@ -3,3 +3,74 @@
     justify-content: space-between;
     align-items: center;
 }
+
+#home-screen .sign-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 2.4rem 0;
+}
+
+#home-screen .sign-list .sign-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: .1rem solid var(--color-dark);
+    border-radius: .2rem;
+    padding: .8rem;
+    gap: 1.6rem;
+    position: relative;
+}
+
+#home-screen .sign-list .sign-item > button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--color-danger);
+    color: var(--color-lighter);
+    transform: translate(10%, -50%);
+    border: 0;
+    border-radius: .2rem;
+    padding: .2rem .4rem;
+    font-weight: 500;
+    transition: .3s;
+    cursor: pointer;
+}
+
+#home-screen .sign-list .sign-item > button:hover {
+    opacity: .8;
+}
+
+#home-screen .sign-list .sign-item div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+#home-screen .sign-list .sign-item div:first-child span:first-child {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 2rem;
+    color: var(--color-darker);
+}
+
+#home-screen .sign-list .sign-item div:first-child span:last-child {
+    font-weight: 500;
+    font-size: .8rem;
+    line-height: 1.2rem;
+    color: var(--color-dark);
+}
+
+#home-screen .sign-list .sign-item div:last-child {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .4rem;
+}
+
+#home-screen .sign-list .sign-item .signed {
+    color: var(--color-success);
+}
+
+@media (min-width: 768px) {
+    #home-screen .sign-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
