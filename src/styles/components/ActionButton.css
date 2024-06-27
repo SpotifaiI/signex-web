@@ -4,6 +4,9 @@
     background: var(--color-primary);
     border-radius: .2rem;
     border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1rem;
     color: var(--color-lighter);
     font-weight: 700;

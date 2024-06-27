@@ -5,6 +5,7 @@ import { Base } from './screens/Base.tsx';
 import { Home } from './screens/Home.tsx';
 import { Login } from "./screens/Login.tsx";
 import { Register } from './screens/Register.tsx';
+import { Send } from './screens/Send.tsx';
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
       },
       {
         path: '/send',
-        element: <div>enviar</div>
+        element: <Send/>
       }
     ]
   },
