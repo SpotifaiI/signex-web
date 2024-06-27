@@ -1,8 +1,8 @@
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { NotFound } from './screens/NotFound.tsx';
 import { Base } from './screens/Base.tsx';
 import { Home } from './screens/Home.tsx';
+import { Login } from "./screens/Login.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const routes = createBrowserRouter([
   {
     errorElement: <NotFound/>,
     path: 'login',
-    element: <div>Login</div>
+    element: <Login />,
   },
   {
     errorElement: <NotFound/>,
@@ -33,5 +33,5 @@ const routes = createBrowserRouter([
 ]);
 
 export function Router() {
-  return <RouterProvider router={routes}/>
+  return <RouterProvider router={routes} />;
 }
