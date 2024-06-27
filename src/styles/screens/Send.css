@@ -1,0 +1,57 @@
+#send-screen {}
+
+#send-screen > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#send-screen form {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-top: 1.2rem;
+}
+
+#send-email-upload {
+    height: 10rem;
+    width: 100%;
+    position: relative;
+}
+
+#send-email-upload label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: .1rem solid var(--color-primary);
+    border-radius: .2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    color: var(--color-primary);
+    transition: .3s;
+}
+
+#send-email-upload label:hover {
+    background-color: var(--color-dark);
+}
+
+.send-email-item {
+    display: flex;
+}
+
+.send-email-item > div:first-child {
+    flex: 1;
+}
+
+.send-email-item > div:last-child {
+    display: flex;
+    align-self: end;
+    gap: .4rem;
+    margin-left: .8rem;
+}
