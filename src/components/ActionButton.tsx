@@ -4,7 +4,7 @@ import '../styles/components/ActionButton.css';
 
 export type ActionButtonProps = {
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 } & PropsWithChildren;
 
 export function ActionButton({
