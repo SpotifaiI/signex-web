@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { ActionButton } from '../components/ActionButton.tsx';
 import { FormInput } from '../components/FormInput.tsx';
 
 import '../styles/screens/Login.css';
-import { Link } from 'react-router-dom';
+import '../styles/shared/LoginRegister.css';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ export function Login() {
   function onLoginHandler() {}
 
   return (
-    <div id="login-screen">
+    <div id="login-screen" className="login-register-shared">
       <div className="login-wrapper">
         <header>
           <span><span>S</span>ignex</span>
@@ -29,7 +30,7 @@ export function Login() {
               onChange={event => setEmail(event.target.value)}
               disabled={false}/>
             <FormInput
-              label="Password"
+              label="Senha"
               type="password"
               value={password}
               onChange={event => setPassword(event.target.value)}

@@ -4,7 +4,7 @@ import '../styles/components/FormInput.css';
 
 export type FormInputProps = {
   label: string;
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
   placeholder?: string;
   value: string|number;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -25,7 +25,7 @@ export function FormInput({
         {label}
       </label>
       <input
-        type={type}
+        type={type ?? 'text'}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
