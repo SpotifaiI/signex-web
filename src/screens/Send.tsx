@@ -122,26 +122,28 @@ export function Send() {
             onChange={onDocInsert}/>
         </section>
 
-        {emails.map(({ email }, index) => (
-          <div key={index} className="send-email-item">
-            <FormInput
-              label="Destinatário"
-              value={email}
-              onChange={event =>
-                onEmailChange(index, event.target.value)}
-              disabled={false}
-              placeholder="exemplo@email.com.br"/>
+        <div>
+          {emails.map(({ email }, index) => (
+            <div key={index} className="send-email-item">
+              <FormInput
+                label="Destinatário"
+                value={email}
+                onChange={event =>
+                  onEmailChange(index, event.target.value)}
+                disabled={false}
+                placeholder="exemplo@email.com.br"/>
 
-            <div>
-              <ActionButton onClick={onAddHandler}>
-                <Plus size={20}/>
-              </ActionButton>
-              <ActionButton onClick={() => onRemoveHandler(index)}>
-                <Minus size={20}/>
-              </ActionButton>
+              <div>
+                <ActionButton onClick={onAddHandler}>
+                  <Plus size={20}/>
+                </ActionButton>
+                <ActionButton onClick={() => onRemoveHandler(index)}>
+                  <Minus size={20}/>
+                </ActionButton>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </form>
 
       <footer>

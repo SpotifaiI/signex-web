@@ -10,6 +10,12 @@
     justify-content: space-between;
 }
 
+#send-screen form, #send-screen form > div {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
 .send-email-upload:first-child {
     height: 20rem;
 }
@@ -39,15 +45,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     gap: .4rem;
     color: var(--color-primary);
     transition: .3s;
 }
 
-#send-screen form {
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
+.send-email-upload label svg {
+    display: none;
 }
 
 .send-email-upload {
@@ -61,21 +66,48 @@
 }
 
 .send-email-item {
-    display: flex;
-}
-
-.send-email-item > div:first-child {
-    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .send-email-item > div:last-child {
     display: flex;
-    align-self: end;
+    align-self: center;
     gap: .4rem;
-    margin-left: .8rem;
+    justify-content: end;
+}
+
+.send-email-item > div button {
+    flex: 1;
 }
 
 #send-screen > footer {
     display: flex;
     flex-direction: column;
+}
+
+@media (min-width: 540px) {
+    .send-email-upload label svg {
+        display: unset;
+    }
+
+    .send-email-item {
+        display: flex;
+    }
+
+    .send-email-item > div:not(:last-child) {
+        flex: 1;
+    }
+
+    .send-email-item > div:last-child {
+        display: flex;
+        align-self: end;
+        gap: .4rem;
+        margin-left: .8rem;
+    }
+
+    .send-email-item > div button {
+        flex: 0;
+    }
 }
