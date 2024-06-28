@@ -75,6 +75,10 @@ export function Send() {
   }
 
   function onRemoveHandler(index: number): void {
+    if (emails.length === 1) {
+      return;
+    }
+
     setEmails(emails
       .filter((_, id) => index !== id));
   }
