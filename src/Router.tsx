@@ -6,6 +6,8 @@ import { Home } from './screens/Home.tsx';
 import { Login } from "./screens/Login.tsx";
 import { Register } from './screens/Register.tsx';
 import { Send } from './screens/Send.tsx';
+import { Sign } from './screens/Sign.tsx';
+import { Redirector } from './components/Redirector.tsx';
 
 const routes = createBrowserRouter([
   {
@@ -15,23 +17,43 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home/>
+        element: (
+          <Redirector.ToHome>
+            <Home/>
+          </Redirector.ToHome>
+        )
       },
       {
-        path: '/send',
-        element: <Send/>
+        path: 'send',
+        element: (
+          <Redirector.ToHome>
+            <Send/>
+          </Redirector.ToHome>
+        )
+      },
+      {
+        path: 'sign/:hash',
+        element: <Sign/>
       }
     ]
   },
   {
     errorElement: <NotFound/>,
     path: 'login',
-    element: <Login />,
+    element: (
+      <Redirector.ToLogin>
+        <Login />
+      </Redirector.ToLogin>
+    ),
   },
   {
     errorElement: <NotFound/>,
     path: 'register',
-    element: <Register/>
+    element: (
+      <Redirector.ToLogin>
+        <Register/>
+      </Redirector.ToLogin>
+    )
   },
 ]);
 
