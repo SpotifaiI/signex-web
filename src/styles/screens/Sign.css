@@ -1,0 +1,28 @@
+#sign-screen {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+#sign-screen section {
+    height: 80vh;
+    width: 100%;
+    border: .1rem solid var(--color-primary);
+    border-radius: .2rem;
+}
+
+#sign-screen section object {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    gap: .4rem;
+    font-size: 1rem;
+}
+
+#sign-screen footer {
+    display: flex;
+    flex-direction: column;
+}
