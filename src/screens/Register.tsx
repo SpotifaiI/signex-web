@@ -53,7 +53,7 @@ export function Register() {
 
       toast.dismiss();
 
-      const data: LoginResponse = response.getData();
+      const data: LoginResponse = login.getData();
 
       logIn(data.token, {
         name: data.name,
