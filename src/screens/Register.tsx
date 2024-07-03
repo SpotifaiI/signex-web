@@ -1,18 +1,26 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
+import { Http } from '../api/Http.ts';
 import { FormInput } from '../components/FormInput.tsx';
 import { ActionButton } from '../components/ActionButton.tsx';
+import { LoginResponse } from './Login.tsx';
 
 import '../styles/shared/LoginRegister.css';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/Auth.tsx';
 
 export function Register() {
+  const navigate = useNavigate();
+  const { logIn } = useAuth();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
 
-  function onRegisterHandler() {
+  const http = new Http();
+
+  async function onRegisterHandler() {
     try {
       if (!name || !email || !password || !confPassword) {
         throw 'Campos obrigatórios para cadastro.';
@@ -21,7 +29,40 @@ export function Register() {
       if (password !== confPassword) {
         throw 'As senhas inseridas não conferem.';
       }
+
+      toast.loading('Realizando cadastro...');
+
+      const response = await http.to('/user/create').post({
+        email, name, password
+      });
+
+      if (!response.isOk()) {
+        throw response.getMessage();
+      }
+
+      toast.dismiss();
+      toast.loading('Redirecionando...');
+
+      const login = await http.to('/user/login').post({
+        email, password
+      });
+
+      if (!response.isOk()) {
+        throw response.getMessage();
+      }
+
+      toast.dismiss();
+
+      const data: LoginResponse = response.getData();
+
+      logIn(data.token, {
+        name: data.name,
+        email: data.email,
+        id: data.user
+      });
+      navigate('/', { replace: true });
     } catch (exception) {
+      toast.dismiss();
       toast.error(<>{exception}</>);
     }
   }

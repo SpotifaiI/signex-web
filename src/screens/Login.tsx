@@ -1,23 +1,58 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
+import { Http } from '../api/Http.ts';
+import { useAuth } from '../contexts/Auth.tsx';
 import { ActionButton } from '../components/ActionButton.tsx';
 import { FormInput } from '../components/FormInput.tsx';
 
 import '../styles/screens/Login.css';
 import '../styles/shared/LoginRegister.css';
-import { toast } from 'react-toastify';
+
+export type LoginResponse = {
+  token: string;
+  user: number;
+  email: string;
+  name: string;
+};
 
 export function Login() {
+  const { logIn } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function onLoginHandler() {
+  const http = new Http();
+
+  async function onLoginHandler() {
     try {
       if (!email || !password) {
         throw 'Campos obrigatórios para login.';
       }
+
+      toast.loading('Realizando cadastro...');
+
+      const response = await http.to('/user/login').post({
+        email, password
+      });
+
+      if (!response.isOk()) {
+        throw response.getMessage();
+      }
+
+      toast.dismiss();
+
+      const data: LoginResponse = response.getData();
+
+      logIn(data.token, {
+        name: data.name,
+        email: data.email,
+        id: data.user
+      });
+      navigate('/', { replace: true });
     } catch (exception) {
+      toast.dismiss();
       toast.error(<>{exception}</>);
     }
   }

@@ -8,6 +8,8 @@ import { ActionButton } from '../components/ActionButton.tsx';
 import { FormInput } from '../components/FormInput.tsx';
 
 import '../styles/screens/Send.css';
+import { useAuth } from '../contexts/Auth.tsx';
+import { Http } from '../api/Http.ts';
 
 type Email = {
   email: string
@@ -18,11 +20,14 @@ export function Send() {
     email: ''
   };
 
+  const { user, headers } = useAuth();
   const navigate = useNavigate();
   const [emails, setEmails] = useState<Email[]>([emptyEmail]);
   const [doc, setDoc] = useState<File>();
   const [docPreview, setDocPreview] = useState('');
   const [hasEmailsToSent, setHasEmailsToSent] = useState(false);
+
+  const http = new Http();
 
   function onBackHandler(): void {
     navigate('/');
@@ -83,7 +88,7 @@ export function Send() {
       .filter((_, id) => index !== id));
   }
 
-  function onSubmitHandler(): void {
+  async function onSubmitHandler() {
     try {
       if (!doc) {
         throw 'Insira um arquivo para prosseguir.';
@@ -92,7 +97,26 @@ export function Send() {
       if (!hasEmailsToSent) {
         throw 'Insira pelo menos um e-mail para a solicitação.';
       }
+
+      const formData = new FormData();
+
+      formData.append('token', headers?.token ?? '');
+      formData.append('file', doc);
+      formData.append('emails', JSON.stringify(emails));
+
+      toast.loading('Adicionando assinatura...');
+
+      const response = await http
+        .to(`/sign/add/${user?.id}`)
+        .post(formData, true);
+
+      if (!response.isOk()) {
+        throw response.getMessage();
+      }
+
+      toast.dismiss();
     } catch (exception) {
+      toast.dismiss();
       toast.error(<>{exception}</>);
     }
   }

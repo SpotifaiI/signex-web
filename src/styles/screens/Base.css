@@ -34,10 +34,10 @@
     margin-right: .2rem;
 }
 
-#base-screen > header span:last-child {
-    font-size: 1.2rem;
-    line-height: 2.4rem;
-    font-weight: 500;
+#base-screen > header button {
+    gap: 1.6rem;
+    background-color: var(--color-lighter);
+    color: var(--color-primary);
 }
 
 #base-screen main {
