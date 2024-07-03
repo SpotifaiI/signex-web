@@ -34,10 +34,14 @@ export class Http {
     return new Result(this.content);
   }
 
-  async post(body) {
+  async post(body, isUpload: boolean = false) {
     this.method = 'POST';
 
-    await this.sendJson(body);
+    if (!isUpload) {
+      await this.sendJson(body);
+    } else {
+      await this.postContent(body);
+    }
     await this.buildContent();
 
     return new Result(this.content);
@@ -84,6 +88,16 @@ export class Http {
       },
       mode: 'cors',
       body: JSON.stringify(data)
+    });
+
+    return this;
+  }
+
+  private async postContent(data) {
+    this.response = await fetch(this.uri, {
+      method: this.method,
+      mode: 'cors',
+      body: data
     });
 
     return this;
