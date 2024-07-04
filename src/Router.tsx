@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { NotFound } from './screens/NotFound.tsx';
+import { Redirector } from './components/Redirector.tsx';
 import { Base } from './screens/Base.tsx';
 import { Home } from './screens/Home.tsx';
 import { Login } from "./screens/Login.tsx";
+import { NotFound } from './screens/NotFound.tsx';
 import { Register } from './screens/Register.tsx';
 import { Send } from './screens/Send.tsx';
 import { Sign } from './screens/Sign.tsx';
-import { Redirector } from './components/Redirector.tsx';
 
 const routes = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
         )
       },
       {
-        path: 'sign/:hash',
+        path: 'sign/:hash/:signer_id',
         element: <Sign/>
       }
     ]

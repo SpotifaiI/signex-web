@@ -1,15 +1,15 @@
 import { ChangeEvent, useState } from 'react';
+import { ArrowLeft, Download, Image, Minus, Plus } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ArrowLeft, Download, Image, Minus, Plus } from 'react-feather';
 
-import { Title } from '../components/Title.tsx';
 import { ActionButton } from '../components/ActionButton.tsx';
 import { FormInput } from '../components/FormInput.tsx';
+import { Title } from '../components/Title.tsx';
 
-import '../styles/screens/Send.css';
-import { useAuth } from '../contexts/Auth.tsx';
 import { Http } from '../api/Http.ts';
+import { useAuth } from '../contexts/Auth.tsx';
+import '../styles/screens/Send.css';
 
 type Email = {
   email: string
@@ -115,6 +115,8 @@ export function Send() {
       }
 
       toast.dismiss();
+      toast.success('Assinatura solicitada com sucesso.');
+      navigate('/');
     } catch (exception) {
       toast.dismiss();
       toast.error(<>{exception}</>);
