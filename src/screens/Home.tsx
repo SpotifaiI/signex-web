@@ -55,8 +55,33 @@ export function Home() {
     loadSigns();
   }, [loadSigns]);
 
-  function onDeleteHandler(signId: number) {
-    confirm(`Confirma a exclusão do envio ${signId} selecionado?`);
+  async function onDeleteHandler(signId: number) {
+    try {
+      if (!confirm(`Confirma a exclusão do envio ${signId} selecionado?`)) {
+        return;
+      }
+
+      toast.loading('Removendo assinatura...');
+
+      const http = new Http();
+
+      const response = await http
+        .to(`/sign/remove/${signId}`)
+        .post({
+          user: user?.id,
+          token: headers?.token
+        });
+
+      if (!response.isOk()) {
+        throw response.getMessage();
+      }
+
+      toast.dismiss();
+      await loadSigns();
+    } catch (exception) {
+      toast.dismiss();
+      toast.error(<>{exception}</>);
+    }
   }
 
   function onAddHandler() {
@@ -74,8 +99,8 @@ export function Home() {
       </header>
 
       <div className="sign-list">
-        {signs.map(sign => (
-          <section className="sign-item">
+        {signs.map((sign, index) => (
+          <section key={index} className="sign-item">
             <div>
               <span>{sign.hash}</span>
               <span>{sign.file}</span>
